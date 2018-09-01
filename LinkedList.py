@@ -19,6 +19,16 @@ class LinkedList:
             yield current
             current = current.nxt
 
+    def __getitem__(self, position):
+        if position < len(self):
+            index = 0
+            current = self.head
+            while index <= position:
+                if index == position:
+                    return current
+                current = current.nxt
+                index += 1
+
     def __str__(self):
         data = [str(x) for x in self]
         return ' -> '.join(data)
@@ -61,6 +71,25 @@ class LinkedList:
                 current= current.nxt
         return self
 
+#CCI q 2.2
+    def nthToLast(self, n): 
+        var = len(self) - n 
+        return self[var]
+
+#CCI q 2.3
+#object is deleted once there are no references to it
+    def delete(self, data):
+        current = self.head
+        previous = None
+        while current != None:
+            if current.data == data:
+                if previous != None:
+                    previous.nxt = current.nxt
+                else: 
+                    self.head=current.nxt
+            previous=current
+            current=current.nxt
+
 
 
 
@@ -101,7 +130,7 @@ class Test(unittest.TestCase):
     def testremoveDuplicates(self):
         self.assertEqual(str(LinkedList.removeDuplicates(linkedListSample)), "1 -> 2 -> 0 -> 8")
         
-
+        
 
 
 if __name__ == "__main__":
