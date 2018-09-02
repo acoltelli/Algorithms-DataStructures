@@ -89,7 +89,21 @@ class LinkedList:
                     self.head=current.nxt
             previous=current
             current=current.nxt
+#CCI q 2.4 
+def reverseAddition(list1, list2):
+    var1 = [str(i) for i in list1]
+    var1.reverse()
+    var2 = [str(i) for i in list2]
+    var2.reverse()
+    solution = LinkedList()
+    
+    concat1 = int(''.join(var1))
+    concat2 = int(''.join(var2))
 
+    var = [i for i in str(concat1+concat2)]
+    for i in var:
+        solution.add(i)
+    return solution
 
 
 
@@ -130,7 +144,17 @@ class Test(unittest.TestCase):
     def testremoveDuplicates(self):
         self.assertEqual(str(LinkedList.removeDuplicates(linkedListSample)), "1 -> 2 -> 0 -> 8")
         
+    def testnthToLast(self):
+        self.assertEqual(str(LinkedList.nthToLast(linkedListSample, 1)), "8")
         
+    def testDelete(self):
+        LinkedList.delete(linkedListSample_, 8)
+        self.assertEqual(str(linkedListSample_), "1 -> 2 -> 0 -> 1 -> 0 -> 1" )
+        LinkedList.delete(linkedListSample_, 0)
+        self.assertEqual(str(linkedListSample_), "1 -> 2 -> 1 -> 1")  
+
+    def testassertEqual(self):
+        self.assertEqual(str(reverseAddition(lst1, lst2)), "8 -> 0 -> 8")
 
 
 if __name__ == "__main__":
