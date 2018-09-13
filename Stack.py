@@ -38,6 +38,18 @@ class Stack:
         return var
 
 
+    def popAt(self,index):  #pops value located at given index  
+        if index >= self.top:
+            exit("Index exceeds stack length")
+        else: 
+            var = self.stack[index]
+            for i in range(index, self.top - 1):
+                self.stack[i] = self.stack[i + 1]
+            self.stack[self.top - 1] = None
+            self.top -= 1
+        return var 
+
+
 ###tests###
 
 class Test(unittest.TestCase):   
@@ -75,6 +87,19 @@ class Test(unittest.TestCase):
     def testStackUnderflow(self):
         var = Stack(1)
         with self.assertRaises(SystemExit): var.pop()
+
+    def testPopAt(self):
+        var = Stack(10)
+        for i in range(1,11):
+            var.push(i)
+        self.assertEqual(var.popAt(0), 1) 
+        self.assertEqual(var.stack, [2, 3, 4, 5, 6, 7, 8, 9, 10, None])
+        var.push(100)
+        self.assertEqual(var.stack, [2, 3, 4, 5, 6, 7, 8, 9, 10, 100])
+        self.assertEqual(var.popAt(9), 100) 
+        self.assertEqual(var.pop(), 10)
+        self.assertEqual(var.stack, [2, 3, 4, 5, 6, 7, 8, 9, None, None])
+
 
     def testOutOfRange(self):
         var = Stack(10)
