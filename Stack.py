@@ -37,7 +37,6 @@ class Stack:
         self.top -= 1        
         return var
 
-
     def popAt(self,index):  #pops value located at given index  
         if index >= self.top:
             exit("Index exceeds stack length")
@@ -47,6 +46,14 @@ class Stack:
                 self.stack[i] = self.stack[i + 1]
             self.stack[self.top - 1] = None
             self.top -= 1
+        return var 
+
+    #CCI q 3.2
+    def stackMin(self):
+        var = self.stack[0]
+        for i in self.stack:
+            if i is not None and i < var:  
+                var = i
         return var 
 
 
@@ -60,7 +67,6 @@ class Test(unittest.TestCase):
         bar = Stack(2)
         self.assertEqual(var.stack, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
         self.assertEqual(bar.stack, [None, None])
-
 
     def testStackOverflow(self):
         var = Stack(10)
@@ -100,12 +106,21 @@ class Test(unittest.TestCase):
         self.assertEqual(var.pop(), 10)
         self.assertEqual(var.stack, [2, 3, 4, 5, 6, 7, 8, 9, None, None])
 
-
     def testOutOfRange(self):
         var = Stack(10)
         for i in range(1,11):
             var.push(i)
         with self.assertRaises(SystemExit): var.popAt(11)
+
+    def testStackMin(self):
+        var = Stack(10)
+        for i in range(1,11):
+            var.push(i)
+        self.assertEqual(var.stackMin(), 1)
+        bar = Stack(2)
+        self.assertEqual(bar.stackMin(), None)
+        var.pop()
+        self.assertEqual(var.stackMin(), 1)  
 
 
 if __name__ == "__main__":
