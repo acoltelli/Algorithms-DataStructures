@@ -56,6 +56,14 @@ class Stack:
                 var = i
         return var 
 
+    # CCI q 3.6 
+    def sortStack(self):   #insertion sort a stack 
+       for i in range(1,len(self.stack)):
+            current = self.stack[i]
+            while i > 0 and self.stack[i-1] > current:       
+                self.stack[i] = self.stack[i-1]
+                i = i - 1
+            self.stack[i] = current
 
 ###tests###
 
@@ -121,6 +129,23 @@ class Test(unittest.TestCase):
         self.assertEqual(bar.stackMin(), None)
         var.pop()
         self.assertEqual(var.stackMin(), 1)  
+
+    def testSortStack(self):
+        var = Stack(5)
+        var.push(5)
+        var.push(4)
+        var.push(3)
+        var.push(2)
+        var.push(1)
+        var.sortStack()
+        self.assertEqual(var.stack, [1, 2, 3, 4, 5])
+        
+        bar = Stack(10)
+        for i in range(0,10):
+            j = random.randint(1,10)
+            bar.push(j)
+        bar.sortStack() 
+        self.assertEqual(bar.stack, sorted(bar)) #test against sorted function 
 
 
 if __name__ == "__main__":
