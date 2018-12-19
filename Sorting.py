@@ -16,6 +16,19 @@ def insertionSort(arr):
         arr[i] = current
     return arr
 
+def quickSort(arr):   #pivot point is first element of array 
+    if len(arr) == 0: 
+      return arr
+    else: 
+      return quickSort([i for i in arr[1:] if i < arr[0]]) + [i for i in arr if i == arr[0]] + quickSort([i for i in arr[1:] if i > arr[0]])
+
+def quickSortMid(arr):   #pivot point is midpoint of array 
+    if len(arr) == 0: 
+      return arr 
+    else: 
+      return quickSortMid([i for i in arr if i < arr[len(arr)/2]]) + [i for i in arr if i == arr[len(arr)/2]] + quickSortMid([i for i in arr if i > arr[len(arr)/2]])
+
+
 
 ###tests###
 
