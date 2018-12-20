@@ -41,6 +41,18 @@ class Test(unittest.TestCase):
       self.assertEqual(insertionSort([3, 1, 2, 4, 6, 5, 3, 1]), [1, 1, 2, 3, 3, 4, 5, 6])
       self.assertEqual(insertionSort([0, 1, 2, 4, 6, 5, 3]),[0, 1, 2, 3, 4, 5, 6])
 
+    def testQuickSort(self):
+      self.assertEqual(quickSort([10,9,8,7,6,5,4,3,2,1]), [1,2,3,4,5,6,7,8,9,10])
+      self.assertEqual(quickSort([7,7,7,7,7,7,7]), [7,7,7,7,7,7,7])
+      self.assertEqual(quickSort([5,4,3,2,1, 10, 0, 5,5, 0]), [0, 0, 1, 2, 3, 4, 5, 5, 5, 10])
+      self.assertEqual(quickSort([5,5,1,4,3,2,5,1, 10,0,0]), [0, 0, 1, 1, 2, 3, 4, 5, 5, 5, 10])
+
+    def testQuickSortMid(self):
+      self.assertEqual(quickSortMid([10,9,8,7,6,5,4,3,2,1]), [1,2,3,4,5,6,7,8,9,10])
+      self.assertEqual(quickSort([7,7,7,7,7,7,7]), [7,7,7,7,7,7,7])
+      self.assertEqual(quickSortMid([5,4,3,2,1, 10, 0, 5,5, 0]), [0, 0, 1, 2, 3, 4, 5, 5, 5, 10])
+      self.assertEqual(quickSortMid([5,5,1,4,3,2,5,1, 10,0,0]), [0, 0, 1, 1, 2, 3, 4, 5, 5, 5, 10])
+
 
 if __name__ == "__main__":
     unittest.main()
