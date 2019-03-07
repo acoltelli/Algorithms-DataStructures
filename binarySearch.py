@@ -29,13 +29,10 @@ def bS(arr, n):
                 last = mid - 1
             else:
                 first = mid + 1
-
     return seen
 
-arr = [-13, 0 , -2, 15, 1009, -7]
-arr = sorted(arr)
-print(bS(arr, -2))
-print(bS(arr, -13)) 
+
+
 
 class Test(unittest.TestCase): 
 	def testBSRecursive(self):
@@ -50,7 +47,16 @@ class Test(unittest.TestCase):
 		self.assertEqual(binarySearch(arr1, 0), True)
 		self.assertEqual(binarySearch(arr1, 27), False)
 		self.assertEqual(binarySearch(arr1, -27), False)
+		arr2 = []
+		self.assertEqual(binarySearch(arr2, 7), False)
 
+	def testBSIterative(self):
+		arr = [-13, 0 , -2, 15, 1009, -7]
+		arr = sorted(arr)
+		self.assertEqual(bS(arr, -2), True)
+		self.assertEqual(bS(arr, -13), True)
+		arr1 = []
+		self.assertEqual(bS(arr1, -2), False)
 
 
 
