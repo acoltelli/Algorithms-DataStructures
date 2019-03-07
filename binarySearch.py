@@ -14,7 +14,28 @@ def binarySearch(arr, n):
       else:
       	return binarySearch(arr[:mid], n)
 
+#iterative    	
+def bS(arr, n):
+    first = 0
+    last = len(arr) - 1
+    seen = False
 
+    while first <= last and seen == False:
+        mid = (first + last) / 2
+        if arr[mid] == n:
+            seen = True
+        else:
+            if n < arr[mid]:
+                last = mid - 1
+            else:
+                first = mid + 1
+
+    return seen
+
+arr = [-13, 0 , -2, 15, 1009, -7]
+arr = sorted(arr)
+print(bS(arr, -2))
+print(bS(arr, -13)) 
 
 class Test(unittest.TestCase): 
 	def testBSRecursive(self):
