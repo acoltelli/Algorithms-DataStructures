@@ -1,4 +1,4 @@
-
+import unittest
 
 #find the number of ways to sum values in arr to get n 
 def coinChange(arr, len, n): 
@@ -10,3 +10,25 @@ def coinChange(arr, len, n):
     return coinChange(arr, len - 1, n) + coinChange(arr, len, n - arr[len-1]); 
   
 
+
+
+
+class Test(unittest.TestCase): 
+	def testCoinChange(self):
+		self.assertEqual(coinChange([1, 2, 3], len([1, 2, 3]), 4), 4)
+		self.assertEqual(coinChange([1, 2], len([1, 2]), 4), 3)
+		self.assertEqual(coinChange([1, 2, 7], len([1, 2, 7]), 4), 3)
+		self.assertEqual(coinChange([1, 2, 3], len([1, 2, 3]), 5), 5)
+		self.assertEqual(coinChange([1, 2, 3], len([1, 2, 3]), 0), 1)
+		self.assertEqual(coinChange([1, 2, 3], len([1, 2, 3]), -5), 0)
+		self.assertEqual(coinChange([], len([]), 5), 0)
+
+
+
+
+
+
+
+
+if __name__ == "__main__":
+    unittest.main()
