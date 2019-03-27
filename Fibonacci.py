@@ -26,7 +26,6 @@ print "recursive " + str(a)
 start = timeit.default_timer()
 nthFibonacci_(25)
 b= timeit.default_timer() - start
-print round(b, 100)
 print "memoization "+ str(b)  
 print "delta " + str(a-b) 
 
