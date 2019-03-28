@@ -21,12 +21,13 @@ def nthFibonacci_(n, memo ={0:0,1:1}):
 start = timeit.default_timer()
 nthFibonacci(25)
 a= timeit.default_timer() - start
-print "recursive " + str(a)
+print "recursive " + str(a) #timeit returns seconds as a float
 
 start = timeit.default_timer()
 nthFibonacci_(25)
 b= timeit.default_timer() - start
-print "memoization "+ str(b)  
+print "memoization "+ str(b) 
+
 print "delta " + str(a-b) 
 
 
