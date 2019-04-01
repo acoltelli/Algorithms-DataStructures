@@ -1,5 +1,4 @@
-import timeit
-
+from timeit import *
 
 #recursive
 def nthFibonacci(n):
@@ -18,27 +17,24 @@ def nthFibonacci_(n, memo ={0:0,1:1}):
 
 
 
-start = timeit.default_timer()
-nthFibonacci(25)
-a= timeit.default_timer() - start
-print "recursive " + str(a) #timeit returns seconds as a float
-
-start = timeit.default_timer()
-nthFibonacci_(25)
-b= timeit.default_timer() - start
-print "memoization "+ str(b) 
-
-print "delta " + str(a-b) 
+###tests
 
 
+testRecurse = Timer("nthFibonacci(20)",
+               "from __main__ import nthFibonacci")
+testMemo = Timer("nthFibonacci_(20)",
+                "from __main__ import nthFibonacci_")
+testRecurse1 = Timer("nthFibonacci(50)",
+               "from __main__ import nthFibonacci")
+testMemo1 = Timer("nthFibonacci(50)",
+                "from __main__ import nthFibonacci")
 
 
 
-
-
-
-
-
+print testRecurse.timeit(number=10) #statement executed ten times 
+print testMemo.timeit(number=10)
+# print testRecurse1.timeit(number=10)
+print testMemo1.timeit(number=10)
 
 
 
