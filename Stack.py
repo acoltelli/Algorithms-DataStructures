@@ -14,14 +14,19 @@ class Stack:
     def __getitem__(self, position):
         return self.stack[position]
 
-    # def __len__(self):
-    #     var = [i for i in self.stack if i is not None]
-    #     return len(var)
+    def __len__(self):
+        var = [i for i in self.stack if i is not None]
+        return len(var)
     
-    # def isFull(self):
-    #     var = len([i for i in self.stack if i == None])
-    #     if var ==0: return True 
-    #     else: return False 
+    def isFull(self):
+        var = len([i for i in self.stack if i == None])
+        if var ==0: return True 
+        else: return False 
+
+    def isEmpty(self):
+        if self.stack == [None for i in range(len(self.stack))]:
+            return True
+        return False
 
     def push(self, data):
         if self.top >= self.size: 
@@ -64,6 +69,7 @@ class Stack:
                 self.stack[i] = self.stack[i-1]
                 i = i - 1
             self.stack[i] = current
+
 
 ###tests###
 
