@@ -14,7 +14,7 @@ def coinChange(arr, len, n):
 #dynamic programming sol 
 #compute the fewest number of coins, items in arr, that you need to sum to n
 def coinChangeDP(arr, n):
-    dp = [0] + [n+1] * n
+    dp = [0] + [n+1] * n # first index set to 0 because there is 0 ways to sum to 0 from arr
     # print dp
     for i in range(1, n+1):
         for j in arr:
@@ -34,7 +34,6 @@ def coinChangeDP(arr, n):
 
 
 
-
 class Test(unittest.TestCase): 
 	def testCoinChange(self):
 		self.assertEqual(coinChange([1, 2, 3], len([1, 2, 3]), 4), 4)
@@ -44,7 +43,7 @@ class Test(unittest.TestCase):
 		self.assertEqual(coinChange([1, 2, 3], len([1, 2, 3]), 0), 1)
 		self.assertEqual(coinChange([1, 2, 3], len([1, 2, 3]), -5), 0)
 		self.assertEqual(coinChange([], len([]), 5), 0)
-	def testCoingChangeDP(self):
+	def testCoinChangeDP(self):
 		self.assertEqual(coinChangeDP([1, 2, 5], 11), 3)
 		self.assertEqual(coinChangeDP([1, 5, 10], 12), 3)
 		self.assertEqual(coinChangeDP([2, 5, 10], 12), 2)
