@@ -3,11 +3,20 @@ import unittest
 def bubbleSort(arr):
     swap = True
     while swap:
-        swap = False
+        swap = False #if no swaps have occurred through the entire for loop, arr is already sorted and the while loop can stop
         for i in range(len(arr) - 1):
             if arr[i] > arr[i + 1]:
                 arr[i], arr[i + 1] = arr[i + 1], arr[i]
                 swap = True
+    return arr
+
+def selectionSort(arr):
+    for i in range(len(arr)):
+        lowValueIndex = i
+        for j in range(i + 1, len(arr)):
+            if arr[j] < arr[lowValueIndex]:
+                lowValueIndex = j
+        arr[i], arr[lowValueIndex] = arr[lowValueIndex], arr[i]
     return arr
 
 def insertionSort(arr):
@@ -58,6 +67,12 @@ class Test(unittest.TestCase):
       self.assertEqual(bubbleSort([3, 1, 0]), [0, 1, 3])
       self.assertEqual(bubbleSort([1,2,3]),[1,2,3])
       self.assertEqual(bubbleSort([0]),[0])
+
+    def testSelectionSort(self):
+      self.assertEqual(selectionSort([3, 1, 2, 4, 6, 5, 3, 1]), [1, 1, 2, 3, 3, 4, 5, 6])
+      self.assertEqual(selectionSort([3, 1, 0]), [0, 1, 3])
+      self.assertEqual(selectionSort([1,2,3]),[1,2,3])
+      self.assertEqual(selectionSort([0]),[0])
 
     def testInsertionSort(self):
       self.assertEqual(insertionSort([3, 1, 2, 4, 6, 5, 3, 1]), [1, 1, 2, 3, 3, 4, 5, 6])
