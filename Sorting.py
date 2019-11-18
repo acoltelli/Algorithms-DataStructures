@@ -1,55 +1,58 @@
 import unittest
 
 def bubbleSort(arr):
-  for i in range(0, len(arr)):
-    for j in range(0,len(arr)-1):
-      if arr[j] > arr[j+1]:
-        arr[j], arr[j+1] = arr[j+1], arr[j]
-  return arr
+    swap = True
+    while swap:
+        swap = False
+        for i in range(len(arr) - 1):
+            if arr[i] > arr[i + 1]:
+                arr[i], arr[i + 1] = arr[i + 1], arr[i]
+                swap = True
+    return arr
 
 def insertionSort(arr):
     for i in range(1,len(arr)):
         current = arr[i]
-        while i > 0 and arr[i-1] > current:         
+        while i > 0 and arr[i-1] > current:
             arr[i] = arr[i-1]
             i -= 1
         arr[i] = current
     return arr
 
-def quickSort(arr):   #pivot point is first element of array 
-    if len(arr) == 0: 
+def quickSort(arr):   #pivot point is first element of array
+    if len(arr) == 0:
       return arr
-    else: 
+    else:
       return quickSort([i for i in arr[1:] if i < arr[0]]) + [i for i in arr if i == arr[0]] + quickSort([i for i in arr[1:] if i > arr[0]])
 
-def quickSortMid(arr):   #pivot point is midpoint of array 
-    if len(arr) == 0: 
-      return arr 
-    else: 
+def quickSortMid(arr):   #pivot point is midpoint of array
+    if len(arr) == 0:
+      return arr
+    else:
       return quickSortMid([i for i in arr if i < arr[len(arr)/2]]) + [i for i in arr if i == arr[len(arr)/2]] + quickSortMid([i for i in arr if i > arr[len(arr)/2]])
 
-def mergeSort(arr): 
-    if len(arr) == 1 :   #end recursions once len partitions is decreased to one 
+def mergeSort(arr):
+    if len(arr) == 1 :   #end recursions once len partitions is decreased to one
       return arr
     else:
       merged = []
-      left = mergeSort(arr[:len(arr)/2])   #divide into two partitions and recursively sort  
+      left = mergeSort(arr[:len(arr)/2])   #divide into two partitions and recursively sort
       right = mergeSort(arr[len(arr)/2:])
- 
+
       while len(left) > 0 and len(right) > 0:
-        if left[0] > right[0]: 
-          merged.append(right.pop(0))   #sort elements in partitions  
-        else: 
+        if left[0] > right[0]:
+          merged.append(right.pop(0))   #sort elements in partitions
+        else:
           merged.append(left.pop(0))
 
       merged.extend(left + right)   #merge the sorted partitions(partially sorted if len>1)
-      return merged   
+      return merged
 
 
 
 ###tests###
 
-class Test(unittest.TestCase):   
+class Test(unittest.TestCase):
     def testBubbleSort(self):
       self.assertEqual(bubbleSort([3, 1, 2, 4, 6, 5, 3, 1]), [1, 1, 2, 3, 3, 4, 5, 6])
       self.assertEqual(bubbleSort([3, 1, 0]), [0, 1, 3])
@@ -87,8 +90,3 @@ class Test(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-
-
-
-
-
