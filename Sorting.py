@@ -11,6 +11,9 @@ def bubbleSort(arr):
     return arr
 
 def selectionSort(arr):
+    # Seperate arr into two parts sorted and unsorted where the sorted elements begin in the leftmost index
+    # Remove the smallest element of the unsorted elements of arr and append it to the sorted segment
+    # by swapping the last element of the sorted list with the smallest element of the unsorted. 
     for i in range(len(arr)):
         lowValueIndex = i
         for j in range(i + 1, len(arr)):
