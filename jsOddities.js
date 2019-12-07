@@ -1,15 +1,24 @@
 
 //type coercion
 
+//object with all elements in str and their count
+let str = 'teststring'
+  const obj = {}
+  for (var i of str) {
+    i in obj ? obj[i] ++ : obj[i] = 1
+  }
 
 //The entries() method returns a new Array Iterator object that contains the key/value pairs for each index in the array.
 const array1 = ['a', 'b', 'c'];
 const iterator1 = array1.entries();
 for(var i of iterator1){
-  console.log(i)
+  // console.log(i)
 }
 
 
+// fill with 0 from position 2 until position 4
+array1.fill(0, 2, 4);
+// expected output: [1, 2, 0, 0]
 
 
 //.every() when you want derive a single boolean value from multiple elements in an array.
@@ -21,3 +30,11 @@ function tester(number){
 sampleArray.every(tester); // returns true
 sampleArray2.every(tester); // returns false
 sampleArray.every( number => number > 0 ); // returns true. ES6
+
+
+//.reduce()
+var numbers = [0, 1, 1, 2];
+function getSum(total, num) {
+  return total + num;
+}
+console.log(numbers.reduce(getSum, 0))
