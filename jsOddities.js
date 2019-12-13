@@ -1,5 +1,6 @@
 
 //type coercion
+// ==
 
 //object with all elements in str and their count
 let str = 'teststring'
@@ -31,6 +32,18 @@ sampleArray.every(tester); // returns true
 sampleArray2.every(tester); // returns false
 sampleArray.every( number => number > 0 ); // returns true. ES6
 
+// .apply()
+// takes array, apply method to each array entry 
+var person = {
+  fullName: function(city, country) {
+    return this.firstName + " " + this.lastName + "," + city + "," + country;
+  }
+}
+var person1 = {
+  firstName:"John",
+  lastName: "Doe"
+}
+person.fullName.apply(person1, ["Oslo", "Norway"]);
 
 //.reduce()
 var numbers = [0, 1, 1, 2];
