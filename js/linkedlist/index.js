@@ -161,6 +161,7 @@ class LinkedList {
 
     /////////
 
+// list.forEach(node => {node.data += 10;});
     forEach(fn) {
       if (!this.head) {
         return null;
@@ -173,6 +174,7 @@ class LinkedList {
       }
     }
 
+// for (let node of list) { node.data += 10;}
     *[Symbol.iterator]() {
       let node = this.head;
       while (node) {
