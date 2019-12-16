@@ -12,7 +12,7 @@ let str = 'teststring'
 //The entries() method returns a new Array Iterator object that contains the key/value pairs for each index in the array.
 const array1 = ['a', 'b', 'c'];
 const iterator1 = array1.entries();
-for(var i of iterator1){
+for (var i of iterator1) {
   // console.log(i)
 }
 
@@ -33,7 +33,7 @@ sampleArray2.every(tester); // returns false
 sampleArray.every( number => number > 0 ); // returns true. ES6
 
 // .apply()
-// takes array, apply method to each array entry 
+// takes array, apply method to each array entry
 var person = {
   fullName: function(city, country) {
     return this.firstName + " " + this.lastName + "," + city + "," + country;
