@@ -11,12 +11,27 @@ function bubbleSort(arr) {
       }
     }
   }
-  return arr
+  return arr;
 }
+
 
 function selectionSort(arr) {
-
+  for (let i=0; i < arr.length; i++) {
+    let indexMin = i;
+    for (let j=i+1; j < arr.length; j++) {
+      if (arr[j] < arr[indexMin]) {
+        indexMin = j;
+      }
+    }
+    if (i !== indexMin ){
+      let minValue = arr[indexMin];
+      arr[indexMin] = arr[i];
+      arr[i] = minValue;
+    }
+  }
+  return arr;
 }
+
 
 function mergeSort(arr) {
 
