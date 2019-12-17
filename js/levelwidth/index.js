@@ -36,6 +36,8 @@ function levelWidth(root) {
       count.push(0);
     } else {
       array.push(...node.children);
+      //increment the last element of count
+      // -1 for indexing
       count[count.length - 1]++;
     }
   }

@@ -11,6 +11,51 @@
 // class.  Contains should accept a 'data' argument
 // and return the Node in the tree with the same value.
 
-class Node {}
+//The left subtree of a node contains only nodes with
+//keys lesser than the node’s key.
+//The right subtree of a node contains only nodes
+// with keys greater than the node’s key.
+//The left and right subtree each must
+//also be a binary search tree.
+
+
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.left = null;
+    this.right = null;
+  }
+
+  insert(data) {
+    //LHS
+    if (data < this.data && this.left) {
+      this.left.insert(data);
+    }
+    else if (data < this.data) {
+      this.left = new Node(data);
+    }
+    // RHS
+    else if (data > this.data && this.right) {
+      this.right.insert(data);
+    }
+    else if (data >= this.data) {
+      this.right = new Node(data);
+    }
+  }
+
+  contains(data) {
+    if (this.data === data) {
+      return this;
+    }
+
+    if (data < this.data && this.left) {
+      return this.left.contains(data);
+    } else if (data > this.data && this.right) {
+      return this.right.contains(data);
+    }
+    return null;
+  }
+
+}
 
 module.exports = Node;
