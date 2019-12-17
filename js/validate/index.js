@@ -6,6 +6,8 @@
 // the parent
 
 function validate(node, min = null, max = null) {
+  // first two if statements set validate() call to false
+  //for use of last two if statements, two recusive calls
   if (max !== null && node.data > max) {
     return false;
   }
@@ -13,6 +15,8 @@ function validate(node, min = null, max = null) {
     return false;
   }
 
+  // left/right children must exist and validate must be false
+  //to return false
   if (node.left && !validate(node.left, min, node.data)){
     return false;
   }
