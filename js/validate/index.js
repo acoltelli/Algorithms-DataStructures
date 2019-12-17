@@ -15,8 +15,9 @@ function validate(node, min = null, max = null) {
     return false;
   }
 
-  // left/right children must exist and validate must be false
-  //to return false
+  // both conditions must be true to return false:
+  //left/right children must exist, validate must be true
+  // to not return false, validate must be true
   if (node.left && !validate(node.left, min, node.data)){
     return false;
   }
