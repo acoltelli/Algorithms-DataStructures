@@ -21,17 +21,20 @@ class Stack {
 
   push(elm){
     //unshift adds elements to beginning of array
-    this.data.unshift(elm);
+    // this.data.unshift(elm);
+    this.data.push(record);
   }
 
   pop(elm){
     //shift returns and deletes first element in array
-    return this.data.shift(elm);
+    // return this.data.shift(elm);
+    return this.data.pop();
   }
 
   peek(elm){
     //rreturns first elm in stack but doesnt remove it
-    return this.data[0];
+    // return this.data[0];
+    return this.data[this.data.length - 1];
   }
 }
 
