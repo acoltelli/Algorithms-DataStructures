@@ -16,7 +16,20 @@ def ps(arr):
     return sol
 
 
-ps("noh")
+# backtracking
+def power_set(nums):
+    power_set = []
+
+    def backtrack(start_index, subset):
+        power_set.append(subset[:])  # append copy of current subset
+        for index in range(start_index, len(nums)):
+            subset.append(nums[index])  # include nums[i] in the subset
+            backtrack(index + 1, subset)  # move forward to build the subset
+            subset.pop()  # backtrack to explore subsets without nums[i]
+
+    backtrack(0, [])
+    return power_set
+
+
+print(power_set(["n", "o", "h"]))
 # [[], ['n'], ['o'], ['n', 'o'], ['h'], ['n', 'h'], ['o', 'h'], ['n', 'o', 'h']]
-ps("hah")
-# [[], ['h'], ['a'], ['h', 'a'], ['h'], ['h', 'h'], ['a', 'h'], ['h', 'a', 'h']]
