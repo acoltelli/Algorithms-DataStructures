@@ -1,8 +1,7 @@
 import unittest
 
 
-
- # A binary tree node
+# A binary tree node
 class Node:
     # node constructor
     def __init__(self, data):
@@ -10,23 +9,20 @@ class Node:
         self.left = None
         self.right = None
 
+
 # compute number of nodes along the longest path from the root node down to the farthest leaf node
 def maxDepth(node):
     if node is None:
-        return 0 ;
-    else :
+        return 0
+    else:
         # depth of each subtree
         lDepth = maxDepth(node.left)
         rDepth = maxDepth(node.right)
         # return the larger one
-        if (lDepth > rDepth):
-            return lDepth+1
+        if lDepth > rDepth:
+            return lDepth + 1
         else:
-            return rDepth+1
-
-
-
-
+            return rDepth + 1
 
 
 class Test(unittest.TestCase):
@@ -38,9 +34,6 @@ class Test(unittest.TestCase):
         root.left.right = Node(5)
 
         self.assertEqual(maxDepth(root), 3)
-
-
-
 
 
 if __name__ == "__main__":

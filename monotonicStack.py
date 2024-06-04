@@ -1,6 +1,6 @@
 def nextGreaterElement(nums):
     stack = []
-    result = [-1] * len(nums)
+    result = [None] * len(nums)
 
     for i, num in enumerate(nums):
         # While stack is not empty and current num is greater than the element

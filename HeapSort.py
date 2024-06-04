@@ -1,7 +1,6 @@
 import unittest
 
 
-
 def heapify(arr, heapSize, rootIndex):
     largest = rootIndex
     leftChild = (2 * rootIndex) + 1
@@ -25,7 +24,9 @@ def heapify(arr, heapSize, rootIndex):
 
 def heapSort(arr):
     # creates a max heap from the arr, and then removes the heaps root(largest) element
-    for i in range(len(arr), -1, -1): # heapify runs backwards from the end of arr to its first element
+    for i in range(
+        len(arr), -1, -1
+    ):  # heapify runs backwards from the end of arr to its first element
         heapify(arr, len(arr), i)
 
     # Move the root of the max heap to the end of arr, thereby creating a sorted arr
@@ -36,13 +37,63 @@ def heapSort(arr):
     return arr
 
 
-
 class Test(unittest.TestCase):
     def testMergeSort(self):
-      self.assertEqual(heapSort([3,2,1, 4,6,5,7,8,9,10,11,0,200000000,12,13,14,15,0,16,1,1,10]),[0,0,1,1,1,2,3,4,5,6,7,8,9,10,10,11,12,13,14,15,16,200000000])
-      self.assertEqual(heapSort([5,0,7,2,4,8]), [0,2,4,5,7,8])
-      self.assertEqual(heapSort([1,2,3,4,5]), [1,2,3,4,5])
-      self.assertEqual(heapSort([7]),[7])
+        self.assertEqual(
+            heapSort(
+                [
+                    3,
+                    2,
+                    1,
+                    4,
+                    6,
+                    5,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    0,
+                    200000000,
+                    12,
+                    13,
+                    14,
+                    15,
+                    0,
+                    16,
+                    1,
+                    1,
+                    10,
+                ]
+            ),
+            [
+                0,
+                0,
+                1,
+                1,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                200000000,
+            ],
+        )
+        self.assertEqual(heapSort([5, 0, 7, 2, 4, 8]), [0, 2, 4, 5, 7, 8])
+        self.assertEqual(heapSort([1, 2, 3, 4, 5]), [1, 2, 3, 4, 5])
+        self.assertEqual(heapSort([7]), [7])
 
 
 if __name__ == "__main__":
